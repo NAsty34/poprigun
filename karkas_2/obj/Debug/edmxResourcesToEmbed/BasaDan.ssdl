@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Mihailova_demo2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="agent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_agent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name_agent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pochta" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="float" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="255" />
+    <Property Name="Prioritet" Type="float" />
+    <Property Name="Director" Type="nvarchar" MaxLength="255" />
+    <Property Name="INN" Type="float" />
+    <Property Name="KPP" Type="float" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_product" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type_product" Type="nvarchar" MaxLength="255" />
+    <Property Name="Artikul" Type="float" />
+    <Property Name="Kol_chel" Type="float" />
+    <Property Name="Number_cexa" Type="float" />
+    <Property Name="min_cost" Type="float" />
+  </EntityType>
+  <EntityType Name="product_agent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Product" Type="int" />
+    <Property Name="ID_Agent" Type="int" />
+    <Property Name="Data_real" Type="datetime" />
+    <Property Name="Count_prod" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_product_agent_agent">
+    <End Role="agent" Type="Self.agent" Multiplicity="0..1" />
+    <End Role="product_agent" Type="Self.product_agent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="product_agent">
+        <PropertyRef Name="ID_Agent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_agent_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="product_agent" Type="Self.product_agent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="product_agent">
+        <PropertyRef Name="ID_Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Mihailova_demo2ModelContainer">
+    <EntitySet Name="agent" EntityType="Self.agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_agent" EntityType="Self.product_agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_product_agent_agent" Association="Self.FK_product_agent_agent">
+      <End Role="agent" EntitySet="agent" />
+      <End Role="product_agent" EntitySet="product_agent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_agent_product" Association="Self.FK_product_agent_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="product_agent" EntitySet="product_agent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
