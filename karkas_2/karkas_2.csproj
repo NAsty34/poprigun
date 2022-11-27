@@ -143,7 +143,7 @@
     <Resource Include="Попрыженок.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="picture.png" />
+    <Resource Include="agents\picture.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="agents\agent_1.png" />

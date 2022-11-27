@@ -11,16 +11,17 @@ namespace karkas_2
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class product_agent
     {
         public int ID { get; set; }
         public Nullable<int> ID_Product { get; set; }
         public Nullable<int> ID_Agent { get; set; }
-        public Nullable<System.DateTime> Data_real { get; set; }
+        public System.DateTime Data_real { get; set; }
         public Nullable<double> Count_prod { get; set; }
-    
+
         public virtual agent agent { get; set; }
         public virtual product product { get; set; }
+        public double Skid{get; set;}
     }
 }

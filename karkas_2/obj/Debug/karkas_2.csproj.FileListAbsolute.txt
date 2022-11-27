@@ -21,3 +21,4 @@ C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\karkas_2_Content.g.cs
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\karkas_2.csproj.CopyComplete
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\App.baml

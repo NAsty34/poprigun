@@ -34,5 +34,8 @@ namespace karkas_2
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product_agent> product_agent { get; set; }
+
+        public int Sale { get; set; }
+        public int Skid { get; set; }
     }
 }
