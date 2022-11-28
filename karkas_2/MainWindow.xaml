@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:karkas_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" Icon="Попрыженок.ico">
+        Title="Главное окно" MinHeight="600" MinWidth="1000" Icon="Попрыженок.ico">
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="88*"/>
             <RowDefinition Height="60*"/>
@@ -23,19 +22,19 @@
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Width="750" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3" Height="84">
 
-            <Image Source="Попрыженок.png" Height="80" />
-            <TextBlock Width="20"/>
-            <TextBlock Text="Агенты" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="60" />
-
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Width="949">
+            <Image Source="Попрыженок.png" Width="80"  />
+            <StackPanel Width="300"/>
+            <TextBlock Text="Агенты" FontFamily="Comic Sans MS" FontSize="60" Width="234" Height="84"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="900" Grid.Column="0" Grid.ColumnSpan="4" Height="40">
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="350">
-                <TextBox x:Name="poisk" FontSize="30" Width="350" HorizontalAlignment="Left"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="949" Grid.Column="0" Grid.ColumnSpan="3" Height="40">
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="300">
+                <TextBox x:Name="poisk" FontSize="30" Width="300" HorizontalAlignment="Left"/>
             </StackPanel>
-            <StackPanel Width="25" />
+            <StackPanel Width="20" />
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="250">
                 <ComboBox FontSize="20" Width="250" x:Name="sortirov" SelectionChanged="ComboBox_SelectionChanged" >
                     <ComboBoxItem Content="Нет сортировки" IsSelected="True"/>
@@ -49,22 +48,28 @@
 
 
             </StackPanel>
-            <StackPanel Width="25" />
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="250">
-                <ComboBox FontSize="20" Width="250" SelectionChanged="ComboBox_SelectionChanged" x:Name="filter" />
+            <StackPanel Width="20" />
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="200">
+                <ComboBox FontSize="20" Width="200" SelectionChanged="ComboBox_SelectionChanged" x:Name="filter" />
 
             </StackPanel>
+            <StackPanel VerticalAlignment="Center" Height="40" Width="186">
+                <Button Content="Добавить" Height="40" Width="131" FontSize="20" FontFamily="Comic Sans MS" Click="Button_Click_2"  />
+            </StackPanel>
+            <StackPanel Width="20" />
         </StackPanel>
-        <ListBox x:Name="bazaList" ScrollViewer.CanContentScroll="False" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Margin="10" HorizontalAlignment="Center" Width="950" >
+        <ListBox MouseDoubleClick="bazaList_MouseDoubleClick" x:Name="bazaList" ScrollViewer.CanContentScroll="False" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Margin="10" HorizontalAlignment="Center" Width="950">
 
-            <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+
+            <ListBox.ItemTemplate  >
+                <DataTemplate  >
+                    <StackPanel Background="{Binding Path=Foreground}" Orientation="Horizontal" x:Name="glav" Width="917">
                         <StackPanel  Orientation="Vertical"  Height="115" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Image x:Name="log" Source="{Binding Path=Logo}" Width="150" Height="100"/>
                         </StackPanel>
                         <StackPanel Width="20"/>
-                        <StackPanel Orientation="Vertical" Height="140" Width="550" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Vertical" Width="550" VerticalAlignment="Center" HorizontalAlignment="Left">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                 <TextBlock x:Name="type_a" Text="{Binding Path=Type_agent}" FontSize="30" FontFamily="Comic Sans MS" Width="80"/>
                                 <TextBlock Text="|" FontSize="30" FontFamily="Comic Sans MS"/>
@@ -75,18 +80,21 @@
                                 <TextBlock Text="{Binding Path=Sale}" FontSize="20" FontFamily="Comic Sans MS"/>
                                 <TextBlock Text=" продаж за 4 года" FontSize="20" FontFamily="Comic Sans MS"/>
                             </StackPanel>
-                            
+
                             <TextBlock Text="{Binding Path=Phone}" FontSize="20" FontFamily="Comic Sans MS"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Приоритетность: " FontSize="20" FontFamily="Comic Sans MS"/>
                                 <TextBlock Text="{Binding Path=Prioritet}" FontSize="20" FontFamily="Comic Sans MS"/>
                             </StackPanel>
-                            
+                            <StackPanel Width="300" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" >
+                                <Button Width="200" Height="30" Content="Редактировать агента" FontSize="15" FontFamily="Comic Sans MS" Click="Button_Click_1"/>
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel Width="120" VerticalAlignment="Top" Orientation="Horizontal">
+                        <StackPanel Width="120" VerticalAlignment="Top" Orientation="Horizontal" >
                             <TextBlock Text="{Binding Path=Skid}" FontSize="30" FontFamily="Comic Sans MS" HorizontalAlignment="Center"/>
                             <TextBlock Text="%" FontSize="30" FontFamily="Comic Sans MS"/>
                         </StackPanel>
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -95,7 +103,7 @@
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="20" Width="980" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="nav" />
 
-           
+
         </StackPanel>
 
 

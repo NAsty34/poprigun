@@ -37,5 +37,6 @@ namespace karkas_2
 
         public int Sale { get; set; }
         public int Skid { get; set; }
+        public string Foreground { get; internal set; }
     }
 }

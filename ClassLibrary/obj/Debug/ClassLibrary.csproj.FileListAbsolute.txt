@@ -1,0 +1,6 @@
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\ClassLibrary\obj\Debug\ClassLibrary.pdb

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karkas_2", "karkas_2\karkas_2.csproj", "{A90AE607-49AF-4D3C-AE64-84A0B38C3349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{AE973CD3-4531-42D3-AD28-B859DD9DFAC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{B0692D53-8E95-4BC7-A579-9EC6643FD800}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A90AE607-49AF-4D3C-AE64-84A0B38C3349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A90AE607-49AF-4D3C-AE64-84A0B38C3349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A90AE607-49AF-4D3C-AE64-84A0B38C3349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE973CD3-4531-42D3-AD28-B859DD9DFAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE973CD3-4531-42D3-AD28-B859DD9DFAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE973CD3-4531-42D3-AD28-B859DD9DFAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE973CD3-4531-42D3-AD28-B859DD9DFAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0692D53-8E95-4BC7-A579-9EC6643FD800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0692D53-8E95-4BC7-A579-9EC6643FD800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0692D53-8E95-4BC7-A579-9EC6643FD800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0692D53-8E95-4BC7-A579-9EC6643FD800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

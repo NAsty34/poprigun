@@ -1,10 +1,12 @@
-﻿using System;
+﻿using karkas_2.Properties;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Media;
 
 namespace karkas_2
 {
@@ -21,11 +23,12 @@ namespace karkas_2
             //bazaList.ItemsSource = Mihailova_demo2Entities.getContext().agent.ToList().Take(10);
 
             filter.ItemsSource = Mihailova_demo2Entities.getContext().agent.Select(a => a.Type_agent).Distinct().Prepend("Все типы").ToList();
-
+        
             filter.SelectedIndex = 0;
             sortirov.SelectedIndex = 0;
             createnav();
-            
+           
+
         }
 
 
@@ -107,11 +110,11 @@ namespace karkas_2
             }
             else if (text.Equals("Скидка по возрастанию"))
             {
-                data = data.OrderBy(a => a.Name_agent);
+                data = data.OrderBy(a => a.Skid);
             }
             else if (text.Equals("Скидка по убыванию"))
             {
-                data = data.OrderByDescending(a => a.Name_agent);
+                data = data.OrderByDescending(a => a.Skid);
             }
             else if (text.Equals("Приоритетнось по возрастанию"))
             {
@@ -161,6 +164,7 @@ namespace karkas_2
                 else
                 {
                     abs.Skid = 25;
+                    abs.Foreground = "#008000";
                 }
 
                
@@ -175,6 +179,35 @@ namespace karkas_2
 
             bazaList.ItemsSource = db;
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            agent ag = ((Button)sender).DataContext as agent;
+            var w = new read();
+            w.init(ag);
+            w.ShowDialog();
+            updateDate();
+        }
+
+        private void bazaList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as agent;
+            if (item != null)
+            {
+                var w = new read();
+                w.init(item);
+                w.ShowDialog();
+                updateDate();
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            agent ag = ((Button)sender).DataContext as agent;
+            var w = new read();
+            w.ShowDialog();
+            updateDate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
