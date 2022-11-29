@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:karkas_2"
         mc:Ignorable="d"
         Title="Главное окно" MinHeight="600" MinWidth="1000" Icon="Попрыженок.ico">
-    <Grid>
+    <Viewbox>
+    <Grid Height="600" Width="1000">
         <Grid.RowDefinitions>
             <RowDefinition Height="88*"/>
             <RowDefinition Height="60*"/>
@@ -108,4 +109,5 @@
 
 
     </Grid>
+    </Viewbox>
 </Window>

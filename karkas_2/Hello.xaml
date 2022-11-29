@@ -1,0 +1,33 @@
+﻿<Window x:Class="karkas_2.Hello"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:karkas_2"
+        mc:Ignorable="d"
+        Title="Hello" MinHeight="215" MinWidth="393" Height="215" Width="393" Icon="Попрыженок.ico" >
+    <Viewbox >
+        <Grid Height="215" Width="393">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="98*"/>
+            <ColumnDefinition Width="98*"/>
+            <ColumnDefinition Width="98*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="Попрыженок.png" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" Opacity="0.2"/>
+        
+            <StackPanel Width="100" Orientation="Vertical" Background="White"  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1">
+            <TextBlock FontWeight="Bold" Text="Введите код"  FontSize="15" Grid.Row="1"  />
+                <TextBox x:Name="admin" Margin="0,5,0,5" KeyDown="Button_KeyDown"/>
+            <Button Content="Войти" Click="Button_Click" />
+        </StackPanel>
+        
+        <TextBlock Text="Приветствую в нашей программе"  FontFamily="Comic Sans MS" FontSize="15" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="255" Height="20" FontWeight="Bold" />
+
+
+    </Grid>
+    </Viewbox>
+</Window>

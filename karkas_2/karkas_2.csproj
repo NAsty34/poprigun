@@ -75,6 +75,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
+    <Compile Include="Hello.xaml.cs">
+      <DependentUpon>Hello.xaml</DependentUpon>
+    </Compile>
     <Compile Include="product.cs">
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
     <Page Include="add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Hello.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

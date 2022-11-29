@@ -47,6 +47,37 @@ namespace karkas_2
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(name.Text))
+            {
+                MessageBox.Show("Заполните поле Наименование");
+                return;
+            }
+            if (String.IsNullOrEmpty(Type.Text))
+            {
+                MessageBox.Show("Заполните поле Тип");
+                return;
+            }
+            if (String.IsNullOrEmpty(pochta.Text))
+            {
+                MessageBox.Show("Заполните поле Почта");
+                return;
+            }
+            if (String.IsNullOrEmpty(logo.Text))
+            {
+                MessageBox.Show("Заполните поле Логотип");
+                return;
+            }
+            if (String.IsNullOrEmpty(adress.Text))
+            {
+                MessageBox.Show("Заполните поле Адрес");
+                return;
+            }
+            if (String.IsNullOrEmpty(direc.Text))
+            {
+                MessageBox.Show("Заполните поле Директор");
+                return;
+            }
+
             if (ag == null) ag = new agent();
             ag.Name_agent = name.Text;
             ag.Type_agent= Type.Text;
@@ -60,7 +91,7 @@ namespace karkas_2
             ag.KPP = double.Parse(K_a.Text);
            
 
-            if (ag.ID != null)
+            if (ag.ID != 0)
             {
                 MessageBox.Show("Изменения сохранены");
             }
@@ -69,7 +100,7 @@ namespace karkas_2
             {
                 Mihailova_demo2Entities.getContext().agent.Add(ag);
                 Mihailova_demo2Entities.getContext().SaveChanges();
-                MessageBox.Show("Создан новый объект");
+                MessageBox.Show("Создан новый агент");
             }
 
         }
