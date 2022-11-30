@@ -1,8 +1,10 @@
 ﻿using karkas_2.Properties;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
@@ -209,6 +211,34 @@ namespace karkas_2
             w.ShowDialog();
             updateDate();
         }
+
+        public void bazaList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int ch = bazaList.SelectedItems.Count;
+            if (ch > 1)
+            {
+                read_pr.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                read_pr.Visibility = Visibility.Hidden;
+
+            }
+
+        }
+
+       
+
+        public void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            
+            List<agent> b_sel = bazaList.SelectedItems.Cast<agent>().ToList();
+            
+            var w = new Pri_Read();
+            w.init(b_sel);
+            w.ShowDialog();
+            updateDate();
+        }   
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

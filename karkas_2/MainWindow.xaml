@@ -7,107 +7,104 @@
         mc:Ignorable="d"
         Title="Главное окно" MinHeight="600" MinWidth="1000" Icon="Попрыженок.ico">
     <Viewbox>
-    <Grid Height="600" Width="1000">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="88*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="361*"/>
-            <RowDefinition Height="58*"/>
+        <Grid Height="600" Width="1000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="88*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="361*"/>
+                <RowDefinition Height="58*"/>
 
-        </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="333*"/>
-            <ColumnDefinition Width="333*"/>
-            <ColumnDefinition Width="271*"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="333*"/>
+                <ColumnDefinition Width="333*"/>
+                <ColumnDefinition Width="271*"/>
 
-        </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
 
 
-        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Width="949">
-            <Image Source="Попрыженок.png" Width="80"  />
-            <StackPanel Width="300"/>
-            <TextBlock Text="Агенты" FontFamily="Comic Sans MS" FontSize="60" Width="234" Height="84"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="949" Grid.Column="0" Grid.ColumnSpan="3" Height="40">
-            
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="300">
-                <TextBox x:Name="poisk" FontSize="30" Width="300" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Width="949">
+                <Image Source="Попрыженок.png" Width="80"  />
+                <StackPanel Width="300"/>
+                <TextBlock Text="Агенты" FontFamily="Comic Sans MS" FontSize="60" Width="234" Height="84"/>
             </StackPanel>
-            <StackPanel Width="20" />
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="250">
-                <ComboBox FontSize="20" Width="250" x:Name="sortirov" SelectionChanged="ComboBox_SelectionChanged" >
-                    <ComboBoxItem Content="Нет сортировки" IsSelected="True"/>
-                    <ComboBoxItem Content="Наименование по возрастанию"/>
-                    <ComboBoxItem Content="Наименование по убыванию"/>
-                    <ComboBoxItem Content="Скидка по возрастанию"/>
-                    <ComboBoxItem Content="Скидка по убыванию"/>
-                    <ComboBoxItem Content="Приоритетнось по возрастанию"/>
-                    <ComboBoxItem Content="Приоритетнось по убыванию"/>
-                </ComboBox>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="949" Grid.Column="0" Grid.ColumnSpan="3" Height="40">
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="300">
+                    <TextBox x:Name="poisk" FontSize="30" Width="300" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Width="20" />
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="250">
+                    <ComboBox FontSize="20" Width="250" x:Name="sortirov" SelectionChanged="ComboBox_SelectionChanged" >
+                        <ComboBoxItem Content="Нет сортировки" IsSelected="True"/>
+                        <ComboBoxItem Content="Наименование по возрастанию"/>
+                        <ComboBoxItem Content="Наименование по убыванию"/>
+                        <ComboBoxItem Content="Скидка по возрастанию"/>
+                        <ComboBoxItem Content="Скидка по убыванию"/>
+                        <ComboBoxItem Content="Приоритетнось по возрастанию"/>
+                        <ComboBoxItem Content="Приоритетнось по убыванию"/>
+                    </ComboBox>
 
 
+                </StackPanel>
+                <StackPanel Width="20" />
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="200">
+                    <ComboBox FontSize="20" Width="200" SelectionChanged="ComboBox_SelectionChanged" x:Name="filter" />
+
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Height="40" Width="186">
+                    <Button Content="Добавить" Height="40" Width="131" FontSize="20" FontFamily="Comic Sans MS" Click="Button_Click_2"  />
+                </StackPanel>
+                <StackPanel Width="20" />
             </StackPanel>
-            <StackPanel Width="20" />
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="200">
-                <ComboBox FontSize="20" Width="200" SelectionChanged="ComboBox_SelectionChanged" x:Name="filter" />
+            <ListBox SelectionMode="Extended" SelectionChanged="bazaList_SelectionChanged" MouseDoubleClick="bazaList_MouseDoubleClick" x:Name="bazaList" ScrollViewer.CanContentScroll="False" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Margin="10" HorizontalAlignment="Center" Width="950">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="{Binding Path=Foreground}" Orientation="Horizontal" x:Name="glav" Width="917">
+                            <StackPanel  Orientation="Vertical"  Height="115" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image x:Name="log" Source="{Binding Path=Logo}" Width="150" Height="100"/>
+                            </StackPanel>
+                            <StackPanel Width="20"/>
+                            <StackPanel Orientation="Vertical" Width="550" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                    <TextBlock x:Name="type_a" Text="{Binding Path=Type_agent}" FontSize="30" FontFamily="Comic Sans MS" Width="80"/>
+                                    <TextBlock Text="|" FontSize="30" FontFamily="Comic Sans MS"/>
+                                    <TextBlock Text="{Binding Path=Name_agent}" FontSize="30" FontFamily="Comic Sans MS" Width="300"/>
+                                </StackPanel>
 
-            </StackPanel>
-            <StackPanel VerticalAlignment="Center" Height="40" Width="186">
-                <Button Content="Добавить" Height="40" Width="131" FontSize="20" FontFamily="Comic Sans MS" Click="Button_Click_2"  />
-            </StackPanel>
-            <StackPanel Width="20" />
-        </StackPanel>
-        <ListBox MouseDoubleClick="bazaList_MouseDoubleClick" x:Name="bazaList" ScrollViewer.CanContentScroll="False" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Margin="10" HorizontalAlignment="Center" Width="950">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=Sale}" FontSize="20" FontFamily="Comic Sans MS"/>
+                                    <TextBlock Text=" продаж за 4 года" FontSize="20" FontFamily="Comic Sans MS"/>
+                                </StackPanel>
 
+                                <TextBlock Text="{Binding Path=Phone}" FontSize="20" FontFamily="Comic Sans MS"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Приоритетность: " FontSize="20" FontFamily="Comic Sans MS"/>
+                                    <TextBlock Text="{Binding Path=Prioritet}" FontSize="20" FontFamily="Comic Sans MS"/>
+                                </StackPanel>
+                                <StackPanel Width="300" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" >
+                                    <Button Width="200" Height="30" Content="Редактировать агента" FontSize="15" FontFamily="Comic Sans MS" Click="Button_Click_1"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Width="120" VerticalAlignment="Top" Orientation="Horizontal" >
+                                <TextBlock Text="{Binding Path=Skid}" FontSize="30" FontFamily="Comic Sans MS" HorizontalAlignment="Center"/>
+                                <TextBlock Text="%" FontSize="30" FontFamily="Comic Sans MS"/>
+                            </StackPanel>
 
-
-            <ListBox.ItemTemplate  >
-                <DataTemplate  >
-                    <StackPanel Background="{Binding Path=Foreground}" Orientation="Horizontal" x:Name="glav" Width="917">
-                        <StackPanel  Orientation="Vertical"  Height="115" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Image x:Name="log" Source="{Binding Path=Logo}" Width="150" Height="100"/>
                         </StackPanel>
-                        <StackPanel Width="20"/>
-                        <StackPanel Orientation="Vertical" Width="550" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                                <TextBlock x:Name="type_a" Text="{Binding Path=Type_agent}" FontSize="30" FontFamily="Comic Sans MS" Width="80"/>
-                                <TextBlock Text="|" FontSize="30" FontFamily="Comic Sans MS"/>
-                                <TextBlock Text="{Binding Path=Name_agent}" FontSize="30" FontFamily="Comic Sans MS" Width="300"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=Sale}" FontSize="20" FontFamily="Comic Sans MS"/>
-                                <TextBlock Text=" продаж за 4 года" FontSize="20" FontFamily="Comic Sans MS"/>
-                            </StackPanel>
-
-                            <TextBlock Text="{Binding Path=Phone}" FontSize="20" FontFamily="Comic Sans MS"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Приоритетность: " FontSize="20" FontFamily="Comic Sans MS"/>
-                                <TextBlock Text="{Binding Path=Prioritet}" FontSize="20" FontFamily="Comic Sans MS"/>
-                            </StackPanel>
-                            <StackPanel Width="300" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" >
-                                <Button Width="200" Height="30" Content="Редактировать агента" FontSize="15" FontFamily="Comic Sans MS" Click="Button_Click_1"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Width="120" VerticalAlignment="Top" Orientation="Horizontal" >
-                            <TextBlock Text="{Binding Path=Skid}" FontSize="30" FontFamily="Comic Sans MS" HorizontalAlignment="Center"/>
-                            <TextBlock Text="%" FontSize="30" FontFamily="Comic Sans MS"/>
-                        </StackPanel>
-
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="20" Width="980" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="nav" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
 
-        </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Height="40" Width="250" HorizontalAlignment="Left" Margin="25,0">
+                <Button x:Name="read_pr" Visibility="Hidden" Content="Изменить приоритет" Height="40" Width="250" FontSize="20" FontFamily="Comic Sans MS" Click="Button_Click_4"  HorizontalAlignment="Left" />
+            </StackPanel>
 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="nav" Grid.Column="2" Grid.Row="3" Margin="0 0 25 0"/>
 
-    </Grid>
+        </Grid>
     </Viewbox>
 </Window>

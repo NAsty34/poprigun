@@ -28,3 +28,5 @@ C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\add.baml
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\Hello.g.cs
 C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\Hello.baml
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\Pri_Read.g.cs
+C:\Users\imnv9\Desktop\демоэкзамен\задание 2\karkas_2\karkas_2\obj\Debug\Pri_Read.baml

@@ -78,6 +78,9 @@
     <Compile Include="Hello.xaml.cs">
       <DependentUpon>Hello.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pri_Read.xaml.cs">
+      <DependentUpon>Pri_Read.xaml</DependentUpon>
+    </Compile>
     <Compile Include="product.cs">
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pri_Read.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="read.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
