@@ -88,8 +88,16 @@ namespace karkas_2
             ag.Prioritet = double.Parse(prior.Text);
             ag.Director = direc.Text;
             ag.INN = double.Parse(I_a.Text);
+            try
+            {
+                double.Parse(K_a.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Сёма отойди");
+            }
             ag.KPP = double.Parse(K_a.Text);
-           
+
 
             if (ag.ID != 0)
             {

@@ -8,6 +8,7 @@ using System.Runtime.Remoting;
 using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace karkas_2
@@ -25,11 +26,11 @@ namespace karkas_2
             //bazaList.ItemsSource = Mihailova_demo2Entities.getContext().agent.ToList().Take(10);
 
             filter.ItemsSource = Mihailova_demo2Entities.getContext().agent.Select(a => a.Type_agent).Distinct().Prepend("Все типы").ToList();
-        
+
             filter.SelectedIndex = 0;
             sortirov.SelectedIndex = 0;
             createnav();
-           
+
 
         }
 
@@ -92,14 +93,22 @@ namespace karkas_2
             string tip = filter.SelectedItem.ToString();
             string text = ((ComboBoxItem)sortirov.SelectedItem).Content.ToString();
             var data = Mihailova_demo2Entities.getContext().agent.Select(a => a);
-
+            string ps = poisk.Text;
 
 
             if (tip != "Все типы")
             {
-                data = data.Where(p => p.Type_agent == tip);
+                data = data.Where(p => p.Type_agent == tip && p.Name_agent.Contains(ps));
 
             }
+            else
+            {
+                data = data.Where(p => p.Name_agent.Contains(ps));
+
+            }
+
+
+
             if (text.Equals("Наименование по возрастанию"))
             {
 
@@ -134,24 +143,24 @@ namespace karkas_2
             var db = data.Skip(nowPage * 10).Take(10).ToList();
             maxCount = (int)Math.Ceiling(data.Count() / 10.0);
 
-            
+
 
             foreach (var abs in db)
             {
                 int date = DateTime.Now.Year;
                 int PG = date - 2022;
-                
-                var P_A = abs.product_agent.Where(p=>p.Data_real.Year > PG && p.Data_real.Year < date).Select(a => a.Count_prod).Sum();
-                
+
+                var P_A = abs.product_agent.Where(p => p.Data_real.Year > PG && p.Data_real.Year < date).Select(a => a.Count_prod).Sum();
+
                 abs.Sale = (int)P_A;
 
                 double skidka = (double)abs.product_agent.Select(a => a.Count_prod * a.product.min_cost).Sum();
-                
-                if (skidka < 10000 && skidka>0)
+
+                if (skidka < 10000 && skidka > 0)
                 {
                     abs.Skid = 0;
                 }
-                else if (skidka>10000 && skidka < 50000)
+                else if (skidka > 10000 && skidka < 50000)
                 {
                     abs.Skid = 5;
                 }
@@ -169,14 +178,14 @@ namespace karkas_2
                     abs.Foreground = "#008000";
                 }
 
-               
+
 
                 if (abs.Logo == null)
 
                 {
                     abs.Logo = "agents/picture.png";
                 }
-                
+
             }
 
             bazaList.ItemsSource = db;
@@ -227,18 +236,26 @@ namespace karkas_2
 
         }
 
-       
+
 
         public void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            
+
             List<agent> b_sel = bazaList.SelectedItems.Cast<agent>().ToList();
-            
+
             var w = new Pri_Read();
             w.init(b_sel);
             w.ShowDialog();
             updateDate();
-        }   
+        }
+
+        private void poisk_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+            updateDate();
+            createnav();
+
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

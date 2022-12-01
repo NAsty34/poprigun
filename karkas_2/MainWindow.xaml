@@ -33,7 +33,7 @@
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="949" Grid.Column="0" Grid.ColumnSpan="3" Height="40">
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="300">
-                    <TextBox x:Name="poisk" FontSize="30" Width="300" HorizontalAlignment="Left"/>
+                    <TextBox KeyDown="poisk_KeyDown" x:Name="poisk" FontSize="30" Width="300" HorizontalAlignment="Left"/>
                 </StackPanel>
                 <StackPanel Width="20" />
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="250">
