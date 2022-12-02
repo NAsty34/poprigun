@@ -64,9 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="add.xaml.cs">
-      <DependentUpon>add.xaml</DependentUpon>
-    </Compile>
     <Compile Include="agent.cs">
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
@@ -93,10 +90,6 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>BasaDan.tt</DependentUpon>
     </Compile>
-    <Page Include="add.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Hello.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
