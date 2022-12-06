@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Runtime.Remoting;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -23,9 +24,10 @@ namespace karkas_2
         {
 
             InitializeComponent();
-            //bazaList.ItemsSource = Mihailova_demo2Entities.getContext().agent.ToList().Take(10);
+            Thread thread = new Thread(oneupdateDate) {IsBackground = true };
+            thread.Start();
 
-            filter.ItemsSource = Mihailova_demo2Entities.getContext().agent.Select(a => a.Type_agent).Distinct().Prepend("Все типы").ToList();
+            
 
             filter.SelectedIndex = 0;
             sortirov.SelectedIndex = 0;
@@ -34,7 +36,68 @@ namespace karkas_2
 
         }
 
+        private void oneupdateDate()
+        {
+            //if (sortirov.SelectedItem == null || filter == null || bazaList == null) return;
 
+           
+            var data = Mihailova_demo2Entities.getContext().agent.Select(a => a);
+
+            var fil = Mihailova_demo2Entities.getContext().agent.Select(a => a.Type_agent).Distinct().Prepend("Все типы").ToList();
+            var db = data.Take(10).ToList();
+ 
+            foreach (var abs in db)
+            {
+                int date = DateTime.Now.Year;
+                int PG = date - 2022;
+
+                var P_A = abs.product_agent.Where(p => p.Data_real.Year > PG && p.Data_real.Year < date).Select(a => a.Count_prod).Sum();
+
+                abs.Sale = (int)P_A;
+
+                double skidka = (double)abs.product_agent.Select(a => a.Count_prod * a.product.min_cost).Sum();
+
+                if (skidka < 10000 && skidka > 0)
+                {
+                    abs.Skid = 0;
+                }
+                else if (skidka > 10000 && skidka < 50000)
+                {
+                    abs.Skid = 5;
+                }
+                else if (skidka > 50000 && skidka < 150000)
+                {
+                    abs.Skid = 10;
+                }
+                else if (skidka > 150000 && skidka < 500000)
+                {
+                    abs.Skid = 20;
+                }
+                else
+                {
+                    abs.Skid = 25;
+                    abs.Foreground = "#008000";
+                }
+
+
+
+                if (abs.Logo == null)
+
+                {
+                    abs.Logo = "agents/picture.png";
+                }
+
+            }
+
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                filter.ItemsSource = fil;
+                bazaList.ItemsSource = db;
+                createnav();
+
+            }));
+        }
 
         public void createnav()
         {
